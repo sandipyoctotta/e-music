@@ -44,20 +44,8 @@ const App = () => {
   const masterPlayRef = useRef(null);
   const progressBarRef = useRef(null);
   const gifRef = useRef(gifImage);
-
+  const [about, setAbout] = useState(false);
   const [nftList, setNftList] = useState([]);
-
-  // const songs = useMemo(() => [
-  //   { songName: "Tera hone laga hoon", filepath: song1, coverpath: cover1, duration: "04.54" },
-  //   { songName: "Shape of you", filepath: song2, coverpath: cover2, duration: "03.53" },
-  //   { songName: "Tere naina", filepath: song3, coverpath: cover3, duration: "04.18" },
-  //   { songName: "Tum Se Hi", filepath: song4, coverpath: cover4, duration: "05.23" },
-  //   { songName: "Rasiya", filepath: song5, coverpath: cover5, duration: "04.25" },
-  //   { songName: "Despacito", filepath: song6, coverpath: cover6, duration: "04.41" },
-  //   { songName: "Kesariya", filepath: song7, coverpath: cover7, duration: "04.28" },
-  //   { songName: "Bones", filepath: song8, coverpath: cover8, duration: "04.28" },
-
-  // ], []);
 
   useEffect(() => {
     fetchMintedNFTs();
@@ -192,155 +180,243 @@ const App = () => {
     setSongIndex(newSongIndex);
     console.log("song selected", newSongs);
   };
-  console.log(data);
   return data.address ? (
     <div
-      style={{ height: "calc(100dvh)", position: "relative", overflow: "auto" }}
+      style={{
+        backgroundImage: `url(${require("./music1.jpg")})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100%",
+        height: "100vh",
+      }}
     >
-      <FileUploadButton onFileSelect={handleFileSelect} />
+      {!about ? <FileUploadButton onFileSelect={handleFileSelect} /> : <></>}
 
       <div>
-        <Navigationbar />
-      </div>
-
-      <div className="container" style={{}}>
-        <div className="SongList" style={{ width: "100%" }}>
-          <div
-            style={{
-              flexDirection: "row",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <h1 id="heading">Sounds That Make You Smile 😊</h1>
-          </div>
-
-          <div
-            className="songItemContainer"
-            style={{
-              overflow: "auto",
-              width: "100%",
-            }}
-          >
-            {nftList.map((song, index) => (
-              <div
-                className="songItem"
-                key={index}
-                onClick={() => setSongIndex(index)}
-              >
-                {/* <img src={song.coverpath} alt="song" /> */}
-                <span style={{ marginRight: 20 }} className="songName">
-                  {song?.name}
-                </span>
-                <span class="songlistplay">
-                  <span class="timestamp">
-                    {song?.size}
-                    <i id="0" class="far songItemPlay fa-play-circle"></i>
-                  </span>
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="songInfo">
-          <img src={gifRef.current} width="45px" alt="music" id="gif" />
-          <span id="masterSongName">{nftList[songIndex]?.name}</span>
-        </div>
-      </div>
-
-      <div
-        className="bottom-bar"
-        style={{
-          backgroundColor: "black",
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          alignItems: "center",
-          justifyContent: "center",
-          display: "flex",
-          flexDirection: "column",
-          marginTop: 20,
-        }}
-      >
-        <input
-          type="range"
-          name="range"
-          id="myProgressBar"
-          min="0"
-          value={progress}
-          max="100"
-          ref={progressBarRef}
-          onChange={handleProgressChange}
-          style={{ marginTop: "15px" }}
+        <Navigationbar
+          onClickHome={() => setAbout(false)}
+          onClickAbout={() => setAbout(true)}
         />
-        <div className="icons">
-          <FontAwesomeIcon
-            color={"#FFF"}
-            icon={faStepBackward}
-            size="2x"
-            id="previous"
-            onClick={handlePreviousSong}
-          />
-          <FontAwesomeIcon
-            color={"#FFF"}
-            icon={isPlaying ? faPauseCircle : faPlayCircle}
-            size="2x"
-            id="masterPlay"
-            onClick={handlePlayPause}
-            ref={masterPlayRef}
-          />
-          <FontAwesomeIcon
-            color={"#FFF"}
-            icon={faStepForward}
-            size="2x"
-            id="next"
-            onClick={handleNextSong}
-          />
-        </div>
       </div>
+
+      {!about ? (
+        <div>
+          <div className="SongList" style={{ width: "100%" }}>
+            <div
+              className="songItemContainer"
+              style={{
+                overflow: "auto",
+                width: "100%",
+              }}
+            >
+              {nftList.map((song, index) => (
+                <div
+                  className="songItem"
+                  key={index}
+                  onClick={() => setSongIndex(index)}
+                >
+                  {/* <img src={song.coverpath} alt="song" /> */}
+                  <span
+                    style={{ marginRight: 20, color: "#FFF" }}
+                    className="songName"
+                  >
+                    {song?.name}
+                  </span>
+                  <span class="songlistplay">
+                    <span class="timestamp">
+                      {song?.size}
+                      <i id="0" class="far songItemPlay fa-play-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="songInfo">
+            <img src={gifRef.current} width="45px" alt="music" id="gif" />
+            <span style={{ color: "#FFF" }} id="masterSongName">
+              {nftList[songIndex]?.name}
+            </span>
+          </div>
+        </div>
+      ) : (
+        <p className="fadeIn">
+          {`A music app is a portal to a world of melodies, beats, and rhythms,
+          right at your fingertips. It's not just an app; it's a gateway to
+          emotions, memories, and creativity. With a music app, you can explore
+          endless playlists curated to suit your mood, discover new artists and
+          genres, and create personalized collections that reflect your unique
+          taste. Whether you're looking to relax, get motivated, or simply
+          groove to the rhythm, a music app transforms your device into a
+          portable concert hall, ready to serenade you anytime, anywhere.`}
+          <p style={{ marginTop: 50 }}>
+            Copyright © 2024 Saswati Barik. All rights reserved.
+          </p>
+        </p>
+      )}
+
+      {!about ? (
+        <div
+          className="bottom-bar"
+          style={{
+            backgroundColor: "black",
+            position: "absolute",
+            bottom: 10,
+            left: 0,
+            right: 0,
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+            flexDirection: "column",
+            marginTop: 20,
+          }}
+        >
+          <input
+            type="range"
+            name="range"
+            id="myProgressBar"
+            min="0"
+            value={progress}
+            max="100"
+            ref={progressBarRef}
+            onChange={handleProgressChange}
+            style={{ marginTop: "15px" }}
+          />
+          <div className="icons">
+            <FontAwesomeIcon
+              style={{ marginRight: 20 }}
+              color={"#FFF"}
+              icon={faStepBackward}
+              size="2x"
+              id="previous"
+              onClick={handlePreviousSong}
+            />
+            <FontAwesomeIcon
+              color={"#FFF"}
+              icon={isPlaying ? faPauseCircle : faPlayCircle}
+              size="2x"
+              id="masterPlay"
+              onClick={handlePlayPause}
+              ref={masterPlayRef}
+            />
+            <FontAwesomeIcon
+              style={{ marginLeft: 20 }}
+              color={"#FFF"}
+              icon={faStepForward}
+              size="2x"
+              id="next"
+              onClick={handleNextSong}
+            />
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   ) : (
-    <Card className="text-center" style={{ border: "none" }}>
-      <Card.Header style={{ border: "none", backgroundColor: "white" }}>
-        <img
-          src={connectwallet}
-          height={300}
-          width={300}
-          alt="connectwallet"
-          style={{ marginRight: "10px" }}
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+      }}
+    >
+      <video
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+        autoPlay
+        loop
+        muted
+      >
+        <source
+          style={{ width: "100vw", height: "100vh" }}
+          src={require("./Images/music.mp4")}
+          type="video/mp4"
         />
-        <br></br>
-        <br></br>
-        <strong style={{ fontSize: "24px", fontWeight: "bold", color: "#333" }}>
-          Welcome to MyMusic Player
-        </strong>
-        <br></br>
-        <strong>Connect wallet to get started</strong>
-      </Card.Header>
-      <div style={{ marginTop: 30 }}>
-        <Button onClick={btnhandler} variant="primary" style={{ width: 200 }}>
-          <div
+      </video>
+      <Card
+        style={{
+          border: "none",
+          position: "absolute",
+          left: "25vw",
+          top: "15vh",
+          paddingBottom: 50,
+        }}
+      >
+        <Card.Header
+          style={{
+            border: "none",
+            backgroundColor: "white",
+            width: "50vw",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "10px",
+          }}
+        >
+          <img
+            src={connectwallet}
+            // height={"30vh"}
+            // width={"30vw"}
+            alt="connectwallet"
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              marginRight: "10px",
+              height: "30vh",
+              objectFit: "contain",
             }}
+          />
+          <br></br>
+          <br></br>
+          <strong
+            style={{ fontSize: "24px", fontWeight: "bold", color: "#333" }}
           >
-            <img
-              src={metamask}
-              height={30}
-              width={30}
-              alt="Metamask Logo"
-              style={{ marginRight: "10px" }}
-            />
-            Connect to wallet
+            Welcome to The Music Player
+          </strong>
+          <br></br>
+          <strong>Connect wallet to get started</strong>
+          <div style={{ marginTop: 30 }}>
+            <Button
+              onClick={btnhandler}
+              variant="primary"
+              style={{ width: 200 }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src={metamask}
+                  height={30}
+                  width={30}
+                  alt="Metamask Logo"
+                  style={{ marginRight: "10px" }}
+                />
+                Connect to wallet
+              </div>
+            </Button>
           </div>
-        </Button>
-      </div>
-    </Card>
+        </Card.Header>
+      </Card>
+      {/* <img
+        style={{ width: "100vw", height: "100vh" }}
+        src={require("./Images/music.gif")}
+        alt="loading..."
+      /> */}
+    </div>
   );
 };
 export default App;

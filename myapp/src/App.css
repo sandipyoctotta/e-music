@@ -1,19 +1,20 @@
-body{
+body {
   background-color: rgb(231, 218, 192);
 }
-iframe{
+iframe {
   position: relative !important;
 }
 
-nav{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+nav {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-nav ul{
+nav ul {
   display: flex;
   align-items: center;
   list-style-type: none;
@@ -23,27 +24,26 @@ nav ul{
   margin-top: 0;
 }
 
-nav ul li{
+nav ul li {
   padding: 0 12px;
 }
 
-.logo img{
+.logo img {
   width: 60px;
   padding: 0 8px;
-  
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
   font-weight: bolder;
   font-size: 1.3 rem;
 }
 
-#heading{
-    margin-left: 25px;
-    margin-top: 10px;
-    font-size: 20px;
+#heading {
+  margin-left: 25px;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
 /* #heading1{
@@ -52,14 +52,14 @@ nav ul li{
     font-size: 8px;
 } */
 
-.container{
-  height: 60vh;
+.container {
+  height: 75%;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   display: flex;
   margin: 5px auto;
-  width:60% !important;
+  width: 100vw !important;
   border-radius: 12px;
   background-image: url(music1.jpg);
   background-size: cover;
@@ -67,18 +67,17 @@ nav ul li{
   max-width: 100vw;
 }
 
-#heading{
+#heading {
   margin-left: 25px;
   margin-top: 10px;
 }
 
-#myProgressBar{
+#myProgressBar {
   width: 80vw;
   cursor: pointer;
-
 }
 
-.bottom{
+.bottom {
   position: sticky;
   height: 75px;
   background-color: black;
@@ -86,14 +85,14 @@ nav ul li{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column ;
+  flex-direction: column;
   bottom: 0;
   padding: 10px;
 }
 
-.icons{
-  margin-top: 14px;
-
+.icons {
+  margin-top: 10px;
+  padding-bottom: 10px;
 }
 
 .icons i {
@@ -102,7 +101,7 @@ nav ul li{
   color: white;
 }
 
-.songItem{
+.songItem {
   height: 40px;
   display: flex;
   background-color: white;
@@ -116,46 +115,57 @@ nav ul li{
   cursor: pointer;
 }
 
-.songItem img{
+.songItem img {
   width: 40px;
-  margin: 0 13px ;
+  margin: 0 13px;
   border-radius: 33px;
   text-align: center;
 }
 
-.timestamp{
+.timestamp {
   margin: 0 23px;
+  color: white;
 }
-.timestamp i{
+.timestamp i {
   cursor: pointer;
-  
+  color: white;
 }
 
-.songItemContainer{
+.songItemContainer {
   margin-top: 15px;
   width: 400px;
   height: 45vh;
   overflow: auto;
 }
 
-.songInfo{
+.songInfo {
   position: absolute;
   left: 10vw;
   bottom: 5vh;
   z-index: 100;
 }
 
-.songInfo img{
+.songInfo img {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
 
 #masterSongName {
   font-size: 13px;
+  color: white;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-
-
-
-
- 
+.fadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
+  color: white;
+  padding: 30px;
+  font-style: italic;
+}
