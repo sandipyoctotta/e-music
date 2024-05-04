@@ -214,20 +214,24 @@ const App = () => {
                   className="songItem"
                   key={index}
                   onClick={() => setSongIndex(index)}
+                  style={{
+                    width: 350,
+                    opacity: 0.5,
+                  }}
                 >
                   {/* <img src={song.coverpath} alt="song" /> */}
                   <span
-                    style={{ marginRight: 20, color: "#FFF" }}
+                    style={{ marginLeft: 20, color: "#000", minWidth: "100%" }}
                     className="songName"
                   >
                     {song?.name}
                   </span>
-                  <span class="songlistplay">
+                  {/* <span class="songlistplay">
                     <span class="timestamp">
                       {song?.size}
                       <i id="0" class="far songItemPlay fa-play-circle"></i>
                     </span>
-                  </span>
+                  </span> */}
                 </div>
               ))}
             </div>
