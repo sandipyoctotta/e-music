@@ -167,7 +167,7 @@ const App = () => {
         backgroundImage: `url(${require("./music1.jpg")})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        width: "100%",
+        width: "100vw",
         height: "100vh",
       }}
     >
