@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,23 +12,6 @@ import Navigationbar from "./Navigationbar";
 import { Button, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import contractABI from "./abi/MeMusic.json";
-import song1 from "./Songs/1.mp3";
-import song2 from "./Songs/2.mp3";
-import song3 from "./Songs/3.mp3";
-import song4 from "./Songs/4.mp3";
-import song5 from "./Songs/5.mp3";
-import song6 from "./Songs/6.mp3";
-import song7 from "./Songs/7.mp3";
-import song8 from "./Songs/8.mp3";
-
-import cover1 from "./Images/cover1.jpeg";
-import cover2 from "./Images/cover2.jpg";
-import cover3 from "./Images/cover3.jpg";
-import cover4 from "./Images/cover4.jpeg";
-import cover5 from "./Images/cover5.jpg";
-import cover6 from "./Images/cover6.jpeg";
-import cover7 from "./Images/cover7.jpg";
-import cover8 from "./Images/cover8.jpg";
 import gifImage from "./Images/song gif.gif";
 import metamask from "./Images/metamask.jpg";
 import connectwallet from "./Images/connectwallet.jpg";
@@ -72,8 +55,6 @@ const App = () => {
         tokenExists = false;
       }
     }
-
-    console.log(nftid);
     fetchJson(nftid);
   }
 
@@ -245,21 +226,93 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <p className="fadeIn">
-          {`A music app is a portal to a world of melodies, beats, and rhythms,
-          right at your fingertips. It's not just an app; it's a gateway to
-          emotions, memories, and creativity. With a music app, you can explore
-          endless playlists curated to suit your mood, discover new artists and
-          genres, and create personalized collections that reflect your unique
-          taste. Whether you're looking to relax, get motivated, or simply
-          groove to the rhythm, a music app transforms your device into a
-          portable concert hall, ready to serenade you anytime, anywhere.`}
+        <div className="fadeIn">
+          <h2>About Our Music Application</h2>
+          <p>
+            Welcome to our revolutionary music application, where we blend the
+            power of blockchain technology with the convenience and
+            accessibility of modern web development to create a seamless and
+            innovative music experience.
+          </p>
+          <h3>The Web3 Component</h3>
+          <p>
+            At the heart of our application lies the Web3 component, powered by
+            Ethereum blockchain. We have developed a smart contract that serves
+            as the backbone of our music ecosystem. This smart contract allows
+            for the minting, ownership, and trading of unique Non-Fungible
+            Tokens (NFTs), each representing a piece of music stored securely on
+            the InterPlanetary File System (IPFS).
+          </p>
+          <h3>The React.js Application</h3>
+          <p>
+            Our user-friendly React.js application provides an intuitive
+            interface for users to interact with the blockchain-powered music
+            ecosystem. Here's how it works:
+          </p>
+          <p>
+            <strong>1. Upload Music to IPFS: </strong> Users can easily upload
+            their music tracks to IPFS directly from our application. This
+            ensures that the music files are stored in a decentralized and
+            immutable manner.
+            <br />
+            <strong>2. Create Metadata: </strong> Upon uploading a music track,
+            users are prompted to provide additional metadata such as the song
+            name, artist information, album cover image, and any other relevant
+            details.
+            <br />
+            <strong>3. Create JSON Metadata: </strong>After uploading the music
+            and providing metadata, our application automatically creates a JSON
+            file containing all the necessary information. This JSON file, along
+            with the IPFS URL of the music track, is then uploaded to IPFS.
+            <br />
+            <strong>4. Mint NFTs: </strong>Using the IPFS hash of the JSON
+            metadata file, users can mint unique NFTs representing their music
+            tracks. These NFTs serve as certificates of ownership and can be
+            bought, sold, or traded on our platform.
+          </p>
+          <br />
+          <br />
+          <h3>The Music Playback Experience</h3>
+          <p>
+            Once music tracks have been minted into NFTs and stored on the
+            blockchain, users can explore and enjoy a vast collection of music
+            through our application. Here's what you can do:
+          </p>
+          <p>
+            <strong>1. Browse Minted Records: </strong>Our application retrieves
+            all minted records from the smart contract deployed on the Ethereum
+            blockchain. Users can browse through these records, each
+            representing a unique music track.
+          </p>
+
+          <p>
+            <strong>2. Listen to Music: </strong>
+            Users can select a minted record and listen to the corresponding
+            music track directly from our application. Our built-in audio player
+            ensures a seamless playback experience, allowing users to enjoy
+            their favorite tunes without interruption.
+          </p>
+          <p>
+            <strong>3. Discover New Music: </strong>
+            With a diverse range of music tracks available on our platform,
+            users can discover new artists, genres, and trends. Our
+            recommendation algorithms help users explore music that aligns with
+            their tastes and preferences.
+          </p>
+          <p>
+            In summary, our music application offers a revolutionary way to
+            discover, share, and enjoy music in a decentralized and transparent
+            manner. By leveraging blockchain technology and modern web
+            development practices, we aim to redefine the music industry and
+            empower artists and listeners alike. Join us on this exciting
+            journey and experience the future of music today!`}
+          </p>
+
           <p style={{ marginTop: 50 }}>
             Copyright © 2024 Saswati Barik. All rights reserved.
           </p>
-        </p>
+        </div>
       )}
-
       {!about ? (
         <div
           className="bottom-bar"
@@ -415,11 +468,6 @@ const App = () => {
           </div>
         </Card.Header>
       </Card>
-      {/* <img
-        style={{ width: "100vw", height: "100vh" }}
-        src={require("./Images/music.gif")}
-        alt="loading..."
-      /> */}
     </div>
   );
 };

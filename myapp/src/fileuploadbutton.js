@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ethers } from "ethers";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import contractABI from "../src/abi/MeMusic.json";
 import { FaSpinner } from "react-icons/fa";
 

@@ -168,4 +168,6 @@ nav ul li {
   color: white;
   padding: 30px;
   font-style: italic;
+  overflow: scroll;
+    max-height: 100%;
 }
