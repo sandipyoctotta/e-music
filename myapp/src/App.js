@@ -305,7 +305,7 @@ const App = () => {
             manner. By leveraging blockchain technology and modern web
             development practices, we aim to redefine the music industry and
             empower artists and listeners alike. Join us on this exciting
-            journey and experience the future of music today!`}
+            journey and experience the future of music today!`
           </p>
 
           <p style={{ marginTop: 50 }}>
